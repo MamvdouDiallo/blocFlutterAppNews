@@ -1,6 +1,6 @@
 import 'package:bloc_udemy/core/app_strings.dart';
 import 'package:bloc_udemy/core/cache_data.dart';
-import 'package:bloc_udemy/screens/home_layout_cubit/home_layout_states.dart';
+import 'package:bloc_udemy/screens/home_layout/home_layout_cubit/home_layout_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeLayoutCubit  extends Cubit<HomeLayoutStates>{
@@ -16,6 +16,14 @@ class HomeLayoutCubit  extends Cubit<HomeLayoutStates>{
 void changeThemeMode(){
   isDark=!isDark;
   SharedData.saveData(key: AppStrings.appTheme, value: isDark);
-  emit(ChageThemeModeState());
+  emit(ChangeThemeModeState());
 }
+
+int currentIndex=0;
+
+  void changeNavBar({required int index}){
+    currentIndex=index;
+    emit(ChangeNaveBarState());
+  }
+
 }
