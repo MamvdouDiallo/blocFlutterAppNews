@@ -1,5 +1,6 @@
 
 
+import 'package:bloc_udemy/bloc/news_bloc.dart';
 import 'package:bloc_udemy/core/app_strings.dart';
 import 'package:bloc_udemy/core/extension.dart';
 import 'package:bloc_udemy/screens/home_layout/home_layout_cubit/home_layout_cubit.dart';
@@ -25,7 +26,10 @@ class HomeLayout extends StatelessWidget {
           IconButton(onPressed: (){
           //  Navigator.of(context).pushNamed(AppStrings.secondScreen);
             context.pushNamed(routeName: AppStrings.secondScreen);
-          }, icon: const Icon(Icons.navigate_next_outlined))
+          }, icon: const Icon(Icons.navigate_next_outlined)),
+           IconButton(onPressed: (){
+             context.read<NewsBloc>().add(HomeEvent());
+           }, icon: const Icon(Icons.add))
         ],
       ),
       body: PageView(
